@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
             else { sum -= prices[index - 1]}
 
         }
-        sum = parseFloat(sum.toFixed(2));
+        sum = sum.toFixed(2);
         totalPrice.innerText = sum + "zł";
     };
     let submitHandle = function(){
