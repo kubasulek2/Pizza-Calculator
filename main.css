@@ -25,9 +25,12 @@ p{
     font-size: 1.5rem;
     padding: 1.5rem;
 }
+input{
+    margin: 0.4rem;
+}
 .container{
 width: 100%;
-/*min-width: 700px;*/
+min-width: 700px;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -42,6 +45,7 @@ justify-content: center;
 }
 button{
     background: #ed6155;
+    cursor: pointer;
     border-radius: .33rem;
     font-size: 2rem;
     padding: 1rem 2.5rem;
@@ -125,6 +129,51 @@ button:active, .section-1 li:active{
 
 
 /*section 2*/
+
+button#prev-1{
+    width: 178px;
+}
+.section-2-container{
+    width: 100%;
+}
+.section-2-container div{
+    text-align: center;
+    border-bottom: 1px solid #ed6155;
+    padding: 2rem;
+
+}
+.section-2-container div:last-child{
+    border: none;
+}
+
+.section-2-header{
+    padding: 2rem;
+}
+
+.section-2-container form div{
+    width: 19%;
+    min-width: 232px;
+    padding: 1rem;
+    margin: .5rem;
+    border: none;
+    text-align: left;
+
+}
+.section-2>.panel{
+    width: 100%;
+}
+.section-2 form{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.section-2 button{
+    margin-top: 3rem;
+}
+
 /*section 3*/
 /*alert*/
 
@@ -137,13 +186,13 @@ button:active, .section-1 li:active{
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0,0,0,.5);
+    background: rgba(0,0,0,.6);
 }
 .alert-container{
     width: 40%;
     min-width: 600px;
     min-height: 600px;
-    background: #ad0828;
+    background: #ed6155;
     border-radius: .33rem;
     display: flex;
     flex-direction: column;
@@ -152,7 +201,13 @@ button:active, .section-1 li:active{
     box-shadow: 3px 3px 5px 2px rgba(0,0,0,.4);
     color: #e7e7e7;
 }
-
+.alert button{
+    padding: 1rem;
+    width: 200px;
+    font-size: 2rem;
+    background: #737373;
+    margin-top: 2rem;
+}
 /*hide*/
 
 .hide{

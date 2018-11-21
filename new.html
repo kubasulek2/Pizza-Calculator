@@ -15,7 +15,7 @@
                 <li class="navbar-item">Summary</li>
             </ul>
     </nav>
-    <div class="section section-1">
+    <div class="section section-1 hide">
         <div class="section-1-container">
             <div class="section-1-header">
                 <h1>Size:</h1>
@@ -42,14 +42,13 @@
             </div>
         </div>
     </div>
-    <div class="section section-2 hide">
-        <div class="section-1-container">
-            <div class='page-header'>
+    <div class="section section-2">
+        <div class="section-2-container">
+            <div class='section-2-header'>
                 <h1>Total cost: <span id="price">0 $</span></h1>
             </div>
             <div class='panel'>
-                <div class='panel-body'>
-                    <form>
+                <form>
                     <div class="checkbox">
                         <label><input type="checkbox">All ingredients</label>
                     </div>
@@ -98,16 +97,12 @@
                     <div class="checkbox">
                         <label><input type="checkbox">Reset Ingredients</label>
                     </div>
-
                     <br>
-                    <p>
-                        <button class='btn btn-primary'>Submit</button>
-                    </p>
                 </form>
-                </div>
+                <button id="accept-2">Accept</button>
             </div>
             <div class="page-footer">
-                <button id="accept-2">Accept</button>
+
                 <button id="prev-1">Prev</button>
 
             </div>
@@ -118,8 +113,8 @@
             <div></div>
         </div>
     </div>
-    <div class="alert hide">
-        <div class="alert-container hide">
+    <div class="alert">
+        <div class="alert-container">
             <div><h1 id="page-info">Alert!</h1></div>
             <button id="alert-button">Ok</button>
         </div>
