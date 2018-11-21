@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //variables
     let sum = 0;
     let pageInfo = document.getElementById("page-info");
-    let checkBoxes = document.querySelectorAll("input[type='checkbox']");
+    let checkBoxes = document.querySelectorAll(".section-2 input[type='checkbox']");
     let totalPrice = document.getElementById("price");
     let form = document.querySelector("form");
     console.log(form);

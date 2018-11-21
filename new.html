@@ -15,12 +15,34 @@
                 <li class="navbar-item">Summary</li>
             </ul>
     </nav>
-    <div class="section-1">
+    <div class="section section-1">
         <div class="section-1-container">
-            <div></div>
+            <div class="section-1-header">
+                <h1>Size:</h1>
+            </div>
+            <div class="section-1-list">
+                <ul>
+                    <li>Small</li>
+                    <li>Medium</li>
+                    <li>Big</li>
+                </ul>
+            </div>
+            <div class="section-1-header">
+                <h1>Dough:</h1>
+            </div>
+            <div class="section-1-list">
+                <ul>
+                    <li>Thin</li>
+                    <li>Thick</li>
+                </ul>
+            </div>
+            <div>
+                <h1 id="">Cost 0 $</h1>
+                <button id="accept-1">Accept</button>
+            </div>
         </div>
     </div>
-    <div class="section-2">
+    <div class="section section-2 hide">
         <div class="section-1-container">
             <div class='page-header'>
                 <h1>Total cost: <span id="price">0 $</span></h1>
@@ -83,18 +105,23 @@
                     </p>
                 </form>
                 </div>
-                <p id="page-info"></p><button>Ok</button>
+            </div>
+            <div class="page-footer">
+                <button id="accept-2">Accept</button>
+                <button id="prev-1">Prev</button>
+
             </div>
         </div>
     </div>
-    <div class="section-3">
+    <div class="section section-3 hide">
         <div class="section-3-container">
             <div></div>
         </div>
     </div>
-    <div class="alert">
-        <div class="alert-container">
-            <div></div>
+    <div class="alert hide">
+        <div class="alert-container hide">
+            <div><h1 id="page-info">Alert!</h1></div>
+            <button id="alert-button">Ok</button>
         </div>
     </div>
 </div>
