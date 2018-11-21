@@ -1,18 +1,33 @@
-
+/*general*/
 *{
     margin: 0;
     padding: 0;
     list-style: none;
+    box-sizing: border-box;
 }
 body{
+     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    height : 100%;
+    font-size: 16px;
+}
+h1{
+    font-size: 2.5rem;
+    padding: 1.5rem;
+    font-weight: 500;
+}
+p{
+    font-size: 1.5rem;
+    padding: 1.5rem;
+}
+.container{
+    width: 100%;
+    min-width: 700px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    height : 100%;
-    font-size: 16px;
 
 }
+/*navigation*/
 .navbar{
     width: 100%;
     display: flex;
@@ -25,6 +40,7 @@ body{
     text-align: center;
 }
 .navbar-item{
+    flex: 1;
     width: 33.33%;
     min-width: 200px;
     font-size: 2rem;
@@ -47,3 +63,4 @@ body{
     background: #ed6155;
     color: #f8f8f8;
 }
+/*sections*/
