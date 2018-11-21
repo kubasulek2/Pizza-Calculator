@@ -8,27 +8,26 @@
 </head>
 <body>
 <div class="container">
-<nav class='navbar'>
-        <ul class="navbar-container">
-            <li class="navbar-item active">Base</li>
-            <li class="navbar-item">Ingredients</li>
-            <li class="navbar-item">Summary</li>
-        </ul>
-</nav>
-
-
-<div>
-    <div class='col-xs-12 col-sm-6 col-sm-offset-3'>
-        <div class='page-header'>
-            <h1>Dodatki</h1>
-            <p>
-                Kwota za dodatki: <span id="price">0zł</span>
-            </p>
+    <nav class='navbar'>
+            <ul class="navbar-container">
+                <li class="navbar-item active">Base</li>
+                <li class="navbar-item">Ingredients</li>
+                <li class="navbar-item">Summary</li>
+            </ul>
+    </nav>
+    <div class="section-1">
+        <div class="section-1-container">
+            <div></div>
         </div>
-
-        <div class='panel'>
-            <div class='panel-body'>
-                <form>
+    </div>
+    <div class="section-2">
+        <div class="section-1-container">
+            <div class='page-header'>
+                <h1>Total cost: <span id="price">0 $</span></h1>
+            </div>
+            <div class='panel'>
+                <div class='panel-body'>
+                    <form>
                     <div class="checkbox">
                         <label><input type="checkbox">All ingredients</label>
                     </div>
@@ -83,11 +82,21 @@
                         <button class='btn btn-primary'>Submit</button>
                     </p>
                 </form>
+                </div>
+                <p id="page-info"></p><button>Ok</button>
             </div>
-            <p id="page-info"></p><button>Ok</button>
         </div>
     </div>
-</div>
+    <div class="section-3">
+        <div class="section-3-container">
+            <div></div>
+        </div>
+    </div>
+    <div class="alert">
+        <div class="alert-container">
+            <div></div>
+        </div>
+    </div>
 </div>
 </body>
 <script src="main.js"></script>

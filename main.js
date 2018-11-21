@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
         sum = sum.toFixed(2);
-        totalPrice.innerText = sum + "zł";
+        totalPrice.innerText = sum + " $";
     };
     let submitHandle = function(){
 
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if ( alright ) {
-            info = "Total cost of your Pizza is " + sum +"zł. Are You sure You want to proceed?";
+            info = "Total cost of your Pizza is " + sum +"$. Are You sure You want to proceed?";
         } else {
             info = "You must choose atleast one ingredient";
         }
