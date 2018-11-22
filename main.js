@@ -14,25 +14,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //functions
 
-    let enlarge = function(){
+    let zoomInOut = function(boolean){
         let element = document.querySelector(".alert-container");
+        let heightUnit = 40;
+        let height = 0;
+        let timer = window.setInterval(function () {
+            if ( height >= 600 ){ window.clearInterval(timer)}
+            element.style.height = height+"px";
+            height += heightUnit;
+
+        },10)
     };
-    let fadeInOut = function(){
+    let fadeInOut = function(boolean){
       let container = document.querySelector(".alert");
       let op = 0.1;
       let timer = window.setInterval(function () {
 
-          if ( op >= 0.6){
+          if ( op >= 0.7){
               window.clearInterval(timer);
 
               window.setTimeout(function () {
                   container.style.backgroundColor ="rgba(0,0,0,0.6)";
                   container.style.opacity = "";
+                  zoomInOut();
                   },20)
           }
           container.style.opacity = op;
-          op += op * 0.05;
-      },20)
+          op += op * 0.15;
+      },10)
     };
 
     let showAlert = function(){

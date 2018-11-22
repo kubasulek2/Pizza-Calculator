@@ -190,8 +190,7 @@ button#prev-1{
 }
 .alert-container{
     width: 40%;
-    min-width: 600px;
-    min-height: 600px;
+    height: 600px;
     background: #ed6155;
     border-radius: .33rem;
     display: flex;
@@ -201,8 +200,11 @@ button#prev-1{
     box-shadow: 3px 3px 5px 2px rgba(0,0,0,.4);
     text-align: center;
     color: #e7e7e7;
-    padding: 4rem 1rem;
+    padding: 0;
     overflow: hidden;
+}
+.alert-container>div, .alert-container>button{
+    margin: 4rem 1rem;
 }
 .alert button{
     padding: 1rem;
