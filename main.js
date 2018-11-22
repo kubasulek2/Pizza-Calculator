@@ -30,31 +30,36 @@ document.addEventListener("DOMContentLoaded", function () {
     let handleInputs = function(element, index){
 
         let elChecked = element.checked;
+        sum = Number(document.querySelector("#price").innerText);
         if ( !index ) {
 
             if ( elChecked ) {
                 checkUncheckAll( true, element )
-            } else {
-                checkUncheckAll( false, element )
             }
+
         } else if ( index === checkBoxes.length - 1 ){
 
             checkUncheckAll(false, element);
         } else {
 
-            if ( elChecked ){ sum += prices[index - 1]}
-            else { sum -= prices[index - 1]}
-
+            if ( elChecked ){ sum += parseFloat(prices[index - 1].toFixed(2)) }
+            else {
+                console.log(sum);
+                console.log(prices[index - 1]);
+                sum -= parseFloat(prices[index - 1].toFixed(2))
+            }
         }
         sum = sum.toFixed(2);
-        totalPrice.innerText = sum + " $";
+        totalPrice.innerText = sum;
     };
-    let submitHandle = function(){
+    let handleSubmit = function(){
 
         event.preventDefault();
+
         let info;
         let self = this;
         let alright = false;
+
 
         for ( let i = 1; i < checkBoxes.length - 1; i++ ){
             if ( checkBoxes[i].checked ){ alright = true }
@@ -62,24 +67,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if ( alright ) {
             info = "Total cost of your Pizza is " + sum +"$. Are You sure You want to proceed?";
+            pageInfo.nextElementSibling.addEventListener("click", function () {
+                self.submit();
+            })
         } else {
-            info = "You must choose atleast one ingredient";
+            info = "You must choose at least one ingredient";
         }
 
         pageInfo.innerText = info;
-        pageInfo.nextElementSibling.addEventListener("click", function () {
-            self.submit();
-        })
-
     };
 
 //events
     checkBoxes.forEach(function ( element, index ) {
 
-        element.addEventListener("click", function () {
+        element.addEventListener("change", function () {
             handleInputs( element, index )
         });
     });
 
-    form.onsubmit = submitHandle;
+    form.onsubmit = handleSubmit();
 });
