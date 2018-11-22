@@ -4,61 +4,122 @@
     <meta charset="UTF-8">
     <title>Pizza Calculator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='main.css'>
 </head>
 <body>
-<nav class='navbar navbar-default'>
-    <div class='container'>
-        <div class="navbar-header">
+<div class="container">
+    <nav class='navbar'>
+        <ul class="navbar-container">
+            <li class="navbar-item active">Base</li>
+            <li class="navbar-item">Ingredients</li>
+            <li class="navbar-item">Summary</li>
+        </ul>
+    </nav>
+    <div class="section section-1 hide">
+        <div class="section-1-container">
+            <div class="section-1-header">
+                <h1>Size:</h1>
+            </div>
+            <div class="section-1-list">
+                <ul>
+                    <li>Small</li>
+                    <li>Medium</li>
+                    <li>Big</li>
+                </ul>
+            </div>
+            <div class="section-1-header">
+                <h1>Dough:</h1>
+            </div>
+            <div class="section-1-list">
+                <ul>
+                    <li>Thin</li>
+                    <li>Thick</li>
+                </ul>
+            </div>
+            <div>
+                <h1 id="">Cost 0 $</h1>
+                <button id="accept-1">Accept</button>
+            </div>
         </div>
     </div>
-</nav>
-
-
-<div class="container">
-    <div class='col-xs-12 col-sm-6 col-sm-offset-3'>
-        <div class='page-header'>
-            <h1>Dodatki</h1>
-            <p>
-                Kwota za dodatki: <span id="price">0zł</span>
-            </p>
-        </div>
-
-        <div class='panel'>
-            <div class='panel-body'>
+    <div class="section section-2">
+        <div class="section-2-container">
+            <div class='section-2-header'>
+                <h1>Total cost: <span id="price">0 $</span></h1>
+            </div>
+            <div class='panel'>
                 <form>
                     <div class="checkbox">
-                        <label><input type="checkbox">Wszystkie dodatki</label>
+                        <label><input type="checkbox">All ingredients</label>
                     </div>
                     <div class="checkbox">
-                        <label><input type="checkbox" data-price="3.50">Dodatkowy ser, 3,50 zł</label>
+                        <label><input type="checkbox" data-price="0.99">Tomato sauce, <span>0,99 $</span></label>
                     </div>
                     <div class="checkbox">
-                        <label><input type="checkbox" data-price="2.20">Dodatkowy sos, 2,20 zł</label>
+                        <label><input type="checkbox" data-price="0.99">Cheese, <span>0,99 $</span></label>
                     </div>
                     <div class="checkbox">
-                        <label><input type="checkbox" data-price="5.00">Dodatkowa szynka, 5 zł</label>
+                        <label><input type="checkbox" data-price="1.50">Extra Cheese, <span>1,50 $</span></label>
                     </div>
                     <div class="checkbox">
-                        <label><input type="checkbox" data-price="4.10">Ananas, 4,10 zł</label>
+                        <label><input type="checkbox" data-price="2.00">Ham, <span>1,50 $</span></label>
                     </div>
                     <div class="checkbox">
-                        <label><input type="checkbox" data-price="3.50">Pieczarki, 3,50 zł</label>
+                        <label><input type="checkbox" data-price="1.70">Mushrooms, <span>1,70 $</span></label>
                     </div>
                     <div class="checkbox">
-                        <label><input type="checkbox">Wyczyść</label>
+                        <label><input type="checkbox" data-price="1.70">Chilli, <span>1,70 $</span></label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" data-price="2.10">Artichokes, <span>2,10 $</span></label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" data-price="2.50">Mozarella Bufala, <span>2,50 $</span></label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" data-price="2.50">Serrano ham,<span>2,50 $</span></label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" data-price="1.90">Olives, <span>1,90 $</span></label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" data-price="2.10">Anchovies, <span>2,10 $</span></label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" data-price="2.70">Sea food, <span>2,70 $</span></label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" data-price="0.99">Onion, <span>0,99 $</span></label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" data-price="0.60">Extra garlic, <span>0,60 $</span></label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox">Reset Ingredients</label>
                     </div>
                     <br>
-                    <p>
-                        <button class='btn btn-primary'>Submit</button>
-                    </p>
                 </form>
+                <button id="accept-2">Accept</button>
             </div>
-            <p id="page-info"></p><button>Ok</button>
+            <div class="page-footer">
+
+                <button id="prev-1">Prev</button>
+
+            </div>
+        </div>
+    </div>
+    <div class="section section-3 hide">
+        <div class="section-3-container">
+            <div></div>
+        </div>
+    </div>
+    <div class="alert hide">
+        <div class="alert-container">
+            <div><h1 id="page-info">Alert!</h1></div>
+            <button id="alert-button">Ok</button>
         </div>
     </div>
 </div>
-
 </body>
 <script src="main.js"></script>
 </html>
