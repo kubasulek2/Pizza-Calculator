@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 //variables
     let sum = 0;
+    let btn1 = document.getElementById("accept-1");
     let btn2 = document.getElementById("accept-2");
     let pageInfo = document.getElementById("page-info");
     let alertBtn = document.querySelector("#alert-button");
@@ -8,13 +9,14 @@ document.addEventListener("DOMContentLoaded", function () {
     let totalPrice = document.getElementById("price");
     const form = document.querySelector(".section-2 form");
     const alertPage = document.querySelector(".alert");
-    let nodesToArray = [].slice.call( document.querySelectorAll( "input[type='checkbox']" ) ); // change nodeList pseudoArray on array, on wich map(), filter() etc. may operate.
-    let priceInputs = nodesToArray.filter(function (e) { return e.hasAttribute("data-price") === true } ); // take out inputs with price attached
-    let prices = priceInputs.map(function (e) { return ( parseFloat(e.dataset.price) )}); //take out price values
-
-
+    const sizeSelect = document.querySelectorAll(".section-1-list");
+    const doughSelect = document.querySelectorAll(".section-1-list2");
 
 //functions
+    // sekcja 1, przekalkulowanie kosztów i przejscie dalej
+    let handleSize = function(){
+        console.log("dzialam");
+    };
 
     //zmiana podstrony, plus efekty fade
 
@@ -153,6 +155,10 @@ document.addEventListener("DOMContentLoaded", function () {
     //funkcja odpowiedzialna za zaznaczanie lub odznaczanie wszystkich checkboxow
     let checkUncheckAll = function(boolean, element){
 
+        let nodesToArray = [].slice.call( document.querySelectorAll( "input[type='checkbox']" ) ); // change nodeList pseudoArray on array, on wich map(), filter() etc. may operate.
+        let priceInputs = nodesToArray.filter(function (e) { return e.hasAttribute("data-price") === true } ); // take out inputs with price attached
+        let prices = priceInputs.map(function (e) { return ( parseFloat(e.dataset.price) )}); //take out price values
+
         for(let i = 0; i < checkBoxes.length -1; i++){ checkBoxes[i].checked = boolean}
 
         if (boolean){
@@ -169,8 +175,13 @@ document.addEventListener("DOMContentLoaded", function () {
     //operacje na checkboxach
     let handleInputs = function(element, index){
 
+        let nodesToArray = [].slice.call( document.querySelectorAll( "input[type='checkbox']" ) ); // change nodeList pseudoArray on array, on wich map(), filter() etc. may operate.
+        let priceInputs = nodesToArray.filter(function (e) { return e.hasAttribute("data-price") === true } ); // take out inputs with price attached
+        let prices = priceInputs.map(function (e) { return ( parseFloat(e.dataset.price) )}); //take out price values
+
         let elChecked = element.checked;
         sum = Number(document.querySelector("#price").innerText);
+
         if ( !index ) {
 
             if ( elChecked ) {
@@ -235,4 +246,8 @@ document.addEventListener("DOMContentLoaded", function () {
         showAlert(false)
     });
 
+    // Section 1 Size choice
+    sizeSelect.forEach(function (el) {
+        el.onclick = handleSize;
+    })
 });

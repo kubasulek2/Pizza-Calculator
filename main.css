@@ -112,7 +112,7 @@ button:active, .section-1 li:active{
 .section-1-container div:last-child{
     border: none;
 }
-.section-1-list > ul{
+.section-1-list > ul, .section-1-list2 > ul{
     display: flex;
     justify-content: center;
 }
