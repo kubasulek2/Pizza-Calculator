@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let btn2 = document.getElementById("accept-2");
     let pageInfo = document.getElementById("page-info");
     let alertBtn = document.querySelector("#alert-button");
-    console.log(pageInfo);
     let checkBoxes = document.querySelectorAll(".section-2 input[type='checkbox']");
     let totalPrice = document.getElementById("price");
     const form = document.querySelector(".section-2 form");
@@ -17,11 +16,64 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //functions
 
-    //zmiana podstrony
+    //zmiana podstrony, plus efekty fade
 
-    let changeSlide = function () {
+    let changeSection = function (n) {
+
+        const allSections = document.querySelectorAll(".section");
+        const navBarItems = document.querySelectorAll(".navbar-item");
+        let activeSectionIndex = findIndex();
+        let activeSection = allSections[activeSectionIndex];
+        let activeNavBarItem = navBarItems[activeSectionIndex];
+        let newSection = allSections[activeSectionIndex + n];
+        let newNavBarItem = navBarItems[activeSectionIndex + n];
+        let op1 = 0;
+        let op2 = 1;
+
+        function findIndex() {
+            for(let i = 0; i < allSections.length; i++){
+                if(! allSections[i].classList.contains("hide")){ return i}
+            }
+        }
+        activeSection.style.opacity = 1;
+        newSection.style.opacity = 0;
+
+        let timerOut = window.setInterval(function () {
+
+            if (op2 <= 0.05){
+
+                window.clearInterval(timerOut);
+                window.setTimeout( function (){
+
+                    activeSection.style.opacity = '';
+                    activeSection.classList.add("hide");
+                    activeNavBarItem.classList.remove("active");
+                    newNavBarItem.classList.add("active");
+                    newSection.classList.remove("hide");
+                    },0 );
+
+                let timerIn = window.setInterval(function () {
+
+                    if (op1 >= 0.95){
+                        window.clearInterval(timerIn);
+                        window.setTimeout( function (){
+
+                            newSection.style.opacity = '';
+                            }, 0);
+                    }
+                    newSection.style.opacity = op1;
+                    op1 += 0.1 * 0.65
+                },16);
+            }
+            activeSection.style.opacity = op2;
+            op2 -= 0.1 * 0.65
+        },16);
 
     };
+    document.querySelector("#accept-1").addEventListener("click", function () {
+       changeSection(1);
+    });
+
     //zamkniecie alertu po kliknieciu poza jego boxem
     let outsideBoxClick = function(){
         if ( ! alertPage.classList.contains("hide") ){
