@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (boolean){
             sum = 0;
-            prices.forEach(function (e  ) { sum += e } );
+            prices.forEach(function (e) { sum += e } );
         } else{
             sum = 0
         }
@@ -242,7 +242,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 sum -= parseFloat(prices[index - 1].toFixed(2))
             }
         }
-        sum = sum.toFixed(2);
+        sum = (sum + doughCost + sizeCost).toFixed(2);
         totalPrice.innerText = sum;
     };
 
