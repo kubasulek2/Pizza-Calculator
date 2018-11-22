@@ -49,57 +49,58 @@
             </div>
             <div class='panel'>
                 <form>
-                    <div class="checkbox">
-                        <label><input type="checkbox">All ingredients</label>
+                    <div>
+                        <div class="checkbox">
+                            <label><input type="checkbox">All ingredients</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" data-price="0.99">Tomato sauce, <span>0,99 $</span></label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" data-price="0.99">Cheese, <span>0,99 $</span></label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" data-price="1.50">Extra Cheese, <span>1,50 $</span></label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" data-price="1.50">Ham, <span>1,50 $</span></label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" data-price="1.70">Mushrooms, <span>1,70 $</span></label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" data-price="1.70">Chilli, <span>1,70 $</span></label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" data-price="2.10">Artichokes, <span>2,10 $</span></label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" data-price="2.50">Mozarella Bufala, <span>2,50 $</span></label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" data-price="2.50">Serrano ham,<span>2,50 $</span></label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" data-price="1.90">Olives, <span>1,90 $</span></label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" data-price="2.10">Anchovies, <span>2,10 $</span></label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" data-price="2.70">Sea food, <span>2,70 $</span></label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" data-price="0.99">Onion, <span>0,99 $</span></label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" data-price="0.60">Extra garlic, <span>0,60 $</span></label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox">Reset Ingredients</label>
+                        </div>
                     </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" data-price="0.99">Tomato sauce, <span>0,99 $</span></label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" data-price="0.99">Cheese, <span>0,99 $</span></label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" data-price="1.50">Extra Cheese, <span>1,50 $</span></label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" data-price="1.50">Ham, <span>1,50 $</span></label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" data-price="1.70">Mushrooms, <span>1,70 $</span></label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" data-price="1.70">Chilli, <span>1,70 $</span></label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" data-price="2.10">Artichokes, <span>2,10 $</span></label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" data-price="2.50">Mozarella Bufala, <span>2,50 $</span></label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" data-price="2.50">Serrano ham,<span>2,50 $</span></label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" data-price="1.90">Olives, <span>1,90 $</span></label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" data-price="2.10">Anchovies, <span>2,10 $</span></label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" data-price="2.70">Sea food, <span>2,70 $</span></label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" data-price="0.99">Onion, <span>0,99 $</span></label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" data-price="0.60">Extra garlic, <span>0,60 $</span></label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox">Reset Ingredients</label>
-                    </div>
-                    <br>
+                    <button id="accept-2">Accept</button>
                 </form>
-                <button id="accept-2">Accept</button>
             </div>
             <div class="page-footer">
 
@@ -113,8 +114,8 @@
             form>input:text
         </div>
     </div>
-    <div class="alert hide">
-        <div class="alert-container">
+    <div class="alert hide" style="opacity: 0">
+        <div class="alert-container" style="height: 0;width: 0">
             <div><h1 id="page-info">Alert!</h1></div>
             <button id="alert-button">Ok</button>
         </div>

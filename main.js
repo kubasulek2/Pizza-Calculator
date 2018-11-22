@@ -2,16 +2,44 @@ document.addEventListener("DOMContentLoaded", function () {
 //variables
     let sum = 0;
     let pageInfo = document.getElementById("page-info");
+    console.log(pageInfo);
     let checkBoxes = document.querySelectorAll(".section-2 input[type='checkbox']");
     let totalPrice = document.getElementById("price");
-    let form = document.querySelector("form");
-    console.log(form);
+    let form = document.querySelector(".section-2 form");
     let nodesToArray = [].slice.call( document.querySelectorAll( "input[type='checkbox']" ) ); // change nodeList pseudoArray on array, on wich map(), filter() etc. may operate.
     let priceInputs = nodesToArray.filter(function (e) { return e.hasAttribute("data-price") === true } ); // take out inputs with price attached
     let prices = priceInputs.map(function (e) { return ( parseFloat(e.dataset.price) )}); //take out price values
 
 
+
 //functions
+
+    let enlarge = function(){
+        let element = document.querySelector(".alert-container");
+    };
+    let fadeInOut = function(){
+      let container = document.querySelector(".alert");
+      let op = 0.1;
+      let timer = window.setInterval(function () {
+
+          if ( op >= 0.6){
+              window.clearInterval(timer);
+
+              window.setTimeout(function () {
+                  container.style.backgroundColor ="rgba(0,0,0,0.6)";
+                  container.style.opacity = "";
+                  },20)
+          }
+          container.style.opacity = op;
+          op += op * 0.05;
+      },20)
+    };
+
+    let showAlert = function(){
+        let alert = document.querySelector(".alert");
+        alert.classList.toggle("hide");
+        fadeInOut();
+    };
     let checkUncheckAll = function(boolean, element){
 
         for(let i = 0; i < checkBoxes.length -1; i++){ checkBoxes[i].checked = boolean}
@@ -53,9 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
         totalPrice.innerText = sum;
     };
     let handleSubmit = function(){
-
         event.preventDefault();
-
         let info;
         let self = this;
         let alright = false;
@@ -67,14 +93,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if ( alright ) {
             info = "Total cost of your Pizza is " + sum +"$. Are You sure You want to proceed?";
-            pageInfo.nextElementSibling.addEventListener("click", function () {
-                self.submit();
-            })
         } else {
-            info = "You must choose at least one ingredient";
+            info = "You must choose at least one ingredient!";
         }
 
         pageInfo.innerText = info;
+        showAlert();
     };
 
 //events
@@ -84,6 +108,6 @@ document.addEventListener("DOMContentLoaded", function () {
             handleInputs( element, index )
         });
     });
-
-    form.onsubmit = handleSubmit();
+    console.log(form);
+    form.onsubmit = handleSubmit;
 });
