@@ -1,21 +1,63 @@
 document.addEventListener("DOMContentLoaded", function () {
 //variables
     let sum = 0;
+    let sizeCost = 0;
+    let doughCost = 0;
     let btn1 = document.getElementById("accept-1");
     let btn2 = document.getElementById("accept-2");
+    let btnPrev1 = document.getElementById("prev-1");
     let pageInfo = document.getElementById("page-info");
     let alertBtn = document.querySelector("#alert-button");
     let checkBoxes = document.querySelectorAll(".section-2 input[type='checkbox']");
     let totalPrice = document.getElementById("price");
+    let basePrice = document.getElementById("cost");
+    let size = document.getElementById("size");
+    let dough = document.getElementById("dough");
     const form = document.querySelector(".section-2 form");
     const alertPage = document.querySelector(".alert");
-    const sizeSelect = document.querySelectorAll(".section-1-list");
-    const doughSelect = document.querySelectorAll(".section-1-list2");
+    const sizeSelect = document.querySelectorAll(".section-1-list li");
+    const doughSelect = document.querySelectorAll(".section-1-list2 li");
+    let initialPrices = resetPrices();
 
 //functions
     // sekcja 1, przekalkulowanie kosztów i przejscie dalej
+    function resetPrices(){
+        let initialPrices = [];
+        for ( let i = 1; i < checkBoxes.length - 1; i++ ){
+            initialPrices.push(parseFloat(checkBoxes[i].dataset.price).toFixed(2));
+        }
+        return initialPrices
+    }
     let handleSize = function(){
-        console.log("dzialam");
+
+        sizeCost = 0;
+        let price = parseFloat(this.dataset.price);
+        let multiply = parseFloat(this.dataset.multiply);
+
+        size.innerText = this.innerText;
+        sizeCost += price;
+        let calculatedPrice = (sizeCost + doughCost).toFixed(2);
+        basePrice.innerText = calculatedPrice;
+
+        //wyzerowanie cen
+        for ( let i = 1; i < checkBoxes.length - 1; i++ ){
+            checkBoxes[i].dataset.price = initialPrices[i-1];
+        }
+        //zastosowanie mnoznika na ceny
+        for ( let i = 1; i < checkBoxes.length - 1; i++ ){
+            checkBoxes[i].dataset.price = parseFloat(checkBoxes[i].dataset.price * multiply).toFixed(2);
+            checkBoxes[i].nextElementSibling.innerText = checkBoxes[i].dataset.price;
+        }
+    };
+    let handleDough = function(){
+
+        doughCost = 0;
+        let price = parseFloat(this.dataset.price);
+
+        dough.innerText = this.innerText;
+        doughCost += price;
+        let calculatedPrice = (sizeCost + doughCost).toFixed(2);
+        basePrice.innerText = calculatedPrice;
     };
 
     //zmiana podstrony, plus efekty fade
@@ -72,9 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },16);
 
     };
-    document.querySelector("#accept-1").addEventListener("click", function () {
-       changeSection(1);
-    });
+
 
     //zamkniecie alertu po kliknieciu poza jego boxem
     let outsideBoxClick = function(){
@@ -153,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     //funkcja odpowiedzialna za zaznaczanie lub odznaczanie wszystkich checkboxow
-    let checkUncheckAll = function(boolean, element){
+    let checkUncheckAll = function(boolean){
 
         let nodesToArray = [].slice.call( document.querySelectorAll( "input[type='checkbox']" ) ); // change nodeList pseudoArray on array, on wich map(), filter() etc. may operate.
         let priceInputs = nodesToArray.filter(function (e) { return e.hasAttribute("data-price") === true } ); // take out inputs with price attached
@@ -167,10 +207,6 @@ document.addEventListener("DOMContentLoaded", function () {
         } else{
             sum = 0
         }
-
-        window.setTimeout(function () {
-            element.checked = false;
-        }, 300)
     };
     //operacje na checkboxach
     let handleInputs = function(element, index){
@@ -185,12 +221,18 @@ document.addEventListener("DOMContentLoaded", function () {
         if ( !index ) {
 
             if ( elChecked ) {
-                checkUncheckAll( true, element )
+                checkUncheckAll( true,);
+                window.setTimeout(function () {
+                    element.checked = false;
+                }, 300)
             }
 
         } else if ( index === checkBoxes.length - 1 ){
 
-            checkUncheckAll(false, element);
+            checkUncheckAll(false);
+            window.setTimeout(function () {
+                element.checked = false;
+            }, 300)
         } else {
 
             if ( elChecked ){ sum += parseFloat(prices[index - 1].toFixed(2)) }
@@ -248,6 +290,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Section 1 Size choice
     sizeSelect.forEach(function (el) {
-        el.onclick = handleSize;
-    })
+        el.addEventListener( "click", handleSize )
+
+    });
+    doughSelect.forEach(function (el) {
+        el.addEventListener( "click", handleDough )
+
+    });
+
+    //zmiany podstron
+    btn1.addEventListener("click", function () {
+        changeSection(1);
+    });
+
+    btn2.addEventListener("click", function () {
+        changeSection(1);
+    });
+
+    btnPrev1.addEventListener("click", function () {
+        changeSection(-1);
+        checkUncheckAll(false)
+    });
 });
