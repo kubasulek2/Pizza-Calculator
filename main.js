@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //variables
     let sum = 0;
     let pageInfo = document.getElementById("page-info");
+    let alertBtn = document.querySelector("#alert-button");
     console.log(pageInfo);
     let checkBoxes = document.querySelectorAll(".section-2 input[type='checkbox']");
     let totalPrice = document.getElementById("price");
@@ -16,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let zoomInOut = function(boolean){
         let element = document.querySelector(".alert-container");
-        let heightUnit = 40;
+        let heightUnit = boolean ? 40 : -40;
         let height = 0;
         let timer = window.setInterval(function () {
             if ( height >= 600 ){ window.clearInterval(timer)}
@@ -27,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     let fadeInOut = function(boolean){
       let container = document.querySelector(".alert");
-      let op = 0.1;
+      let op = boolean ? 0.1 : -0.1;
       let timer = window.setInterval(function () {
 
           if ( op >= 0.7){
@@ -36,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
               window.setTimeout(function () {
                   container.style.backgroundColor ="rgba(0,0,0,0.6)";
                   container.style.opacity = "";
-                  zoomInOut();
+                  zoomInOut(boolean);
                   },20)
           }
           container.style.opacity = op;
@@ -44,10 +45,10 @@ document.addEventListener("DOMContentLoaded", function () {
       },10)
     };
 
-    let showAlert = function(){
+    let showAlert = function(boolean){
         let alert = document.querySelector(".alert");
         alert.classList.toggle("hide");
-        fadeInOut();
+        fadeInOut(boolean);
     };
     let checkUncheckAll = function(boolean, element){
 
@@ -92,7 +93,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let handleSubmit = function(){
         event.preventDefault();
         let info;
-        let self = this;
         let alright = false;
 
 
@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         pageInfo.innerText = info;
-        showAlert();
+        showAlert(true);
     };
 
 //events
@@ -117,6 +117,9 @@ document.addEventListener("DOMContentLoaded", function () {
             handleInputs( element, index )
         });
     });
-    console.log(form);
+
     form.onsubmit = handleSubmit;
+    alertBtn.addEventListener("click", function () {
+        showAlert(false)
+    })
 });
