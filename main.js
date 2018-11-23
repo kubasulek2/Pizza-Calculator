@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let doughCost = 0;
     let btn1 = document.getElementById("accept-1");
     let btn2 = document.getElementById("accept-2");
-    let btnPrev1 = document.getElementById("prev-1");
+    const btnPrev1 = document.getElementById("prev-1");
+    const btnPrev2 = document.getElementById("prev-2");
     let pageInfo = document.getElementById("page-info");
     let alertBtn = document.querySelector("#alert-button");
     let checkBoxes = document.querySelectorAll(".section-2 input[type='checkbox']");
@@ -284,12 +285,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if ( alright ) {
             info = "Total cost of your Pizza is " + sum.toFixed(2) +"$.";
+            createPizzaData();
         } else {
             info = "You must choose at least one ingredient!";
         }
 
         pageInfo.innerText = info;
         showAlert(true);
+    };
+
+    let createPizzaData = function () {
+        pizzaData.size = size.innerText;
+        pizzaData.dough = dough.innerText;
+        pizzaData.cost = totalPrice.innerText;
+
+        for(let i = 1; i < checkBoxes.length -1 ; i++){
+            if ( checkBoxes[i].checked ){
+               let ingredient = checkBoxes[i].parentElement.innerText.split(",");
+               pizzaData.ingredients.push(ingredient[0]);
+            }
+        }
+        console.log(pizzaData);
     };
 
 //events
@@ -309,7 +325,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //zamkniecie alertu po kliknieciu w przycisk
     alertBtn.addEventListener("click", function () {
-        showAlert(false)
+        if( pageInfo.innerText === "Are You Sure?" ){
+            console.log(pageInfo.innerText);
+            location.reload();
+        }
+        showAlert(false);
+
     });
 
     // Section 1 Size choice
@@ -335,11 +356,21 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-
+    //eventy na przyciskach do zmiany sekcji na poprzednia
     btnPrev1.addEventListener("click", function () {
         changeSection(-1);
         //odcheckowanie wszystkich skladników i powrot do ceny z sekcji 1
         checkUncheckAll(false);
         totalPrice.innerText = basePrice.innerText
     });
+    btnPrev2.addEventListener( "click", function () {
+       changeSection(-1)
+    });
+
+    document.querySelector("#reset").addEventListener("click", function () {
+        pageInfo.innerText = "Are You Sure?";
+        showAlert(true)
+    })
+
+
 });

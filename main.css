@@ -315,7 +315,7 @@ button#prev-1{
     width: 80%;
     border-bottom: 1px solid #ed6155;
 }
-.alert button#accept-3{
+.alert button{
     padding: 1rem;
     width: 200px;
     font-size: 2rem;
