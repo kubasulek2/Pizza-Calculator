@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let orderData = {
         name: '',
         surname: '',
-        adressLine1: '',
-        adressLine2: '',
+        street: '',
+        apartment: '',
         postalCode: '',
         email: '',
         telNumber: '',
