@@ -15,7 +15,7 @@
             <li class="navbar-item">Summary</li>
         </ul>
     </nav>
-    <div class="section section-1 hide">
+    <div class="section section-1">
         <div class="section-1-container">
             <div class="section-1-header">
                 <h1>Size: <span id="size"></span></h1>
@@ -42,7 +42,7 @@
             </div>
         </div>
     </div>
-    <div class="section section-2 hide">
+    <div class="section section-2">
         <div class="section-2-container">
             <div class='section-2-header'>
                 <h1>Total cost: <span id="price">0</span> $</h1>
@@ -112,33 +112,36 @@
     <div class="section section-3">
         <div class="section-3-container">
             <div id="resumee">
-                <h1>Your Choice:</h1>
-                <p id="resumee-item1"></p>
-                <p id="resumee-item2"></p>
+                <h1><span>Your Choice:</span></h1>
+                <p id="resumee-item1">aaaa</p>
+                <p id="resumee-item2">aaaa</p>
             </div>
             <div class="from-container">
                 <form id="delivery" action="">
-                    <label>Name:<br />
-                        <input id="name" type="text" name="name">
-                    </label>
-                    <label>Surname:<br />
-                        <input id="surname" type="text" name="surname">
-                    </label>
-                    <label>Street:<br />
-                        <input id="street" type="text" name="street">
-                    </label>
-                    <label>Apartment:<br />
-                        <input id="apartment" type="text" class="optional" name="apartment">
-                    </label>
-                    <label>Email:<br />
-                        <input id="email" type="email" name="email">
-                    </label>
-                    <label>Number:<br />
-                        <input id="telNumber" type="number" name="telNumber">
-                    </label>
-                    <label>Comments:<br />
-                        <input id="comments" type="textarea" name="comments" class="optional">
-                    </label>
+                    <div>
+                        <label>Name:<br />
+                            <input id="name" type="text" name="name">
+                        </label>
+                        <label>Surname:<br />
+                            <input id="surname" type="text" name="surname">
+                        </label>
+                        <label>Street:<br />
+                            <input id="street" type="text" name="street">
+                        </label>
+                        <label>Apartment:<br />
+                            <input id="apartment" type="text" class="optional" name="apartment">
+                        </label>
+                        <label>Email:<br />
+                            <input id="email" type="email" name="email">
+                        </label>
+                        <label>Number:<br />
+                            <input id="telNumber" type="number" name="telNumber">
+                        </label>
+                        <label>Comments:<br />
+                            <input id="comments" type="textarea" name="comments" class="optional">
+                        </label>
+                    </div>
+                    <p id="formAlertMessage"></p>
                     <button id="accept-3">Accept</button>
                 </form>
                 <button id="prev2">Prev</button>
