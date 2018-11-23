@@ -20,6 +20,23 @@ document.addEventListener("DOMContentLoaded", function () {
     const doughSelect = document.querySelectorAll(".section-1-list2 li");
     let initialPrices = resetPrices();
 
+    let pizzaData = {
+        size: "",
+        dough: "",
+        ingredients: [],
+        cost: []
+    };
+    let orderData = {
+        name: '',
+        surname: '',
+        adressLine1: '',
+        adressLine2: '',
+        postalCode: '',
+        email: '',
+        telNumber: '',
+        comments: ''
+    };
+
 
 
 //functions
@@ -131,24 +148,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let zoomInOut = function(boolean){
         let element = document.querySelector(".alert-container");
-        let heightUnit = boolean ? 45 : -45;
-        let height = boolean ? 0 : 800;
+        let heightUnit = boolean ? 4 : -4;
+        let height = boolean ? 0 : 90;
         let timer = window.setInterval(function () {
 
-            if ( boolean && height >= 800 ) {
+            if ( boolean && height >= 90 ) {
                 window.clearInterval(timer);
                 document.addEventListener("click",outsideBoxClick);
 
-            } else if ( ! boolean && height <= 40 ){
+            } else if ( ! boolean && height <= 1 ){
                 element.style.height = "0";
                 fadeOut();
                 window.clearInterval(timer)
             }
 
-            element.style.height = height + "px";
+            element.style.height = height + "vh";
             height += heightUnit;
         },10)
     };
+
 
     //zaczyna otwierac okno alertu
     let fadeIn = function(boolean){
@@ -183,7 +201,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 container.style.backgroundColor="";
                 op ="0";
                 window.clearInterval(timer);
-                document.removeEventListener("click",outsideBoxClick)
+                document.removeEventListener("click",outsideBoxClick);
+                if ( pageInfo.innerText.includes( "Total" ) ){ changeSection(1) }
             }
           container.style.opacity = op;
           op = op - 0.1 * 0.15;
@@ -264,7 +283,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if ( alright ) {
-            info = "Total cost of your Pizza is " + sum +"$. Are You sure You want to proceed?";
+            info = "Total cost of your Pizza is " + sum.toFixed(2) +"$.";
         } else {
             info = "You must choose at least one ingredient!";
         }
@@ -316,9 +335,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    btn2.addEventListener("click", function () {
-        changeSection(1);
-    });
 
     btnPrev1.addEventListener("click", function () {
         changeSection(-1);

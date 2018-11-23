@@ -190,7 +190,6 @@ button#prev-1{
 }
 .alert-container{
     width: 40%;
-    height: 600px;
     background: #f8f8f8;
     border-radius: .33rem;
     display: flex;
