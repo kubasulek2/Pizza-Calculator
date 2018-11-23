@@ -122,7 +122,9 @@ document.addEventListener("DOMContentLoaded", function () {
     //zamkniecie alertu po kliknieciu poza jego boxem
     let outsideBoxClick = function(){
         if ( ! alertPage.classList.contains("hide") ){
-            if ( ! event.target.closest(".alert-container") ){showAlert(false)}
+
+            //wlacza sie kiedy otwieram alert z sekcji1
+            //if ( ! event.target.closest(".alert-container") ){showAlert(false)}
         }
     };
 
@@ -244,8 +246,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 sum -= parseFloat(prices[index - 1].toFixed(2))
             }
         }
-        console.log(sum);
-        //sum = (sum + doughCost + sizeCost).toFixed(2);
+        // zczytanie ceny z sekcji1 dodanie do ceny sekcji 2 i wstawienie do elementu html
         totalPrice.innerText = (sum + parseFloat(basePrice.innerText)).toFixed(2);
     };
 
@@ -303,8 +304,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //zmiany podstron
     btn1.addEventListener("click", function () {
-        changeSection(1);
-        totalPrice.innerText = basePrice.innerText;
+
+        if ( dough.innerText === "" || size.innerText === ""){
+            pageInfo.innerText = "You must choose size and dough!";
+            showAlert(true)
+        } else {
+            changeSection(1);
+            // ustawienie ceny z sekcji 1 na start sekcji 2
+            totalPrice.innerText = basePrice.innerText;
+        }
     });
 
     btn2.addEventListener("click", function () {
@@ -313,6 +321,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     btnPrev1.addEventListener("click", function () {
         changeSection(-1);
+        //odcheckowanie wszystkich skladników i powrot do ceny z sekcji 1
         checkUncheckAll(false);
         totalPrice.innerText = basePrice.innerText
     });
