@@ -284,8 +284,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if ( alright ) {
-            info = "Total cost of your Pizza is " + sum.toFixed(2) +"$.";
-            createPizzaData();
+            info = "Total cost of your Pizza is " + (sum + parseFloat(basePrice.innerText)).toFixed(2) +"$.";
+            createPizzaData(true);
         } else {
             info = "You must choose at least one ingredient!";
         }
@@ -294,18 +294,31 @@ document.addEventListener("DOMContentLoaded", function () {
         showAlert(true);
     };
 
-    let createPizzaData = function () {
-        pizzaData.size = size.innerText;
-        pizzaData.dough = dough.innerText;
-        pizzaData.cost = totalPrice.innerText;
+    let createPizzaData = function (boolean) {
+        let resumeItem1 = document.querySelector("#resume-item1");
+        let resumeItem2 = document.querySelector("#resume-item2");
+        let resumeCost = document.getElementById("resume-cost");
 
-        for(let i = 1; i < checkBoxes.length -1 ; i++){
-            if ( checkBoxes[i].checked ){
-               let ingredient = checkBoxes[i].parentElement.innerText.split(",");
-               pizzaData.ingredients.push(ingredient[0]);
+        if (! boolean){
+            pizzaData.size = '';
+            pizzaData.dough = '';
+            pizzaData.cost = '';
+            pizzaData.ingredients = []
+        } else{
+            pizzaData.size = size.innerText;
+            pizzaData.dough = dough.innerText;
+            pizzaData.cost = totalPrice.innerText;
+
+            for(let i = 1; i < checkBoxes.length -1 ; i++){
+                if ( checkBoxes[i].checked ){
+                    let ingredient = checkBoxes[i].parentElement.innerText.split(",");
+                    pizzaData.ingredients.push(ingredient[0]);
+                }
             }
+            resumeCost.innerText = " " + pizzaData.cost + " $";
+            resumeItem1.innerText = pizzaData.size +",  " + pizzaData.dough;
+            resumeItem2.innerText = pizzaData.ingredients.join(",  ")+"."
         }
-        console.log(pizzaData);
     };
 
 //events
@@ -364,7 +377,8 @@ document.addEventListener("DOMContentLoaded", function () {
         totalPrice.innerText = basePrice.innerText
     });
     btnPrev2.addEventListener( "click", function () {
-       changeSection(-1)
+        createPizzaData(false);
+        changeSection(-1)
     });
 
     document.querySelector("#reset").addEventListener("click", function () {

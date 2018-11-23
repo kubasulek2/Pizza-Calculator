@@ -188,6 +188,9 @@ button#prev-1{
     min-width: 650px;
     text-align: left;
 }
+#resume span{
+    color: #3399FF;
+}
 #resume h1{
     font-size: 3rem;
 }
@@ -245,6 +248,7 @@ button#prev-1{
     margin: 2.2rem 0 0 0;
     border-bottom: 1px solid #808080;
     background: #f5f5f5;
+    color: #3399FF;
 }
 .section-3 input:focus ~ .focus-border,
 .section-3 textarea:focus ~ .focus-border{
