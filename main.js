@@ -123,8 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let outsideBoxClick = function(){
         if ( ! alertPage.classList.contains("hide") ){
 
-            //wlacza sie kiedy otwieram alert z sekcji1
-            //if ( ! event.target.closest(".alert-container") ){showAlert(false)}
+            if ( ! event.target.closest(".alert-container") ){showAlert(false)}
         }
     };
 
@@ -304,6 +303,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //zmiany podstron
     btn1.addEventListener("click", function () {
+        event.stopImmediatePropagation();
 
         if ( dough.innerText === "" || size.innerText === ""){
             pageInfo.innerText = "You must choose size and dough!";
