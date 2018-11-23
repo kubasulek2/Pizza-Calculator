@@ -136,7 +136,8 @@ document.addEventListener("DOMContentLoaded", function () {
         let timer = window.setInterval(function () {
 
             if ( boolean && height >= 800 ) {
-                window.clearInterval(timer)
+                window.clearInterval(timer);
+                document.addEventListener("click",outsideBoxClick);
 
             } else if ( ! boolean && height <= 40 ){
                 element.style.height = "0";
@@ -182,6 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 container.style.backgroundColor="";
                 op ="0";
                 window.clearInterval(timer);
+                document.removeEventListener("click",outsideBoxClick)
             }
           container.style.opacity = op;
           op = op - 0.1 * 0.15;
@@ -192,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         boolean ? fadeIn(boolean) : zoomInOut(boolean);
         //dodaje lub usuwa event ktory zamyka ramke alertu po kliknieciu poza nia
-        boolean ? document.addEventListener("click",outsideBoxClick) : document.removeEventListener("click",outsideBoxClick)
+
 
     };
 
@@ -303,7 +305,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //zmiany podstron
     btn1.addEventListener("click", function () {
-        event.stopImmediatePropagation();
 
         if ( dough.innerText === "" || size.innerText === ""){
             pageInfo.innerText = "You must choose size and dough!";
