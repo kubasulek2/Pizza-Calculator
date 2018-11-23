@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 //variables
+
     let sum = 0;
     let sizeCost = 0;
     let doughCost = 0;
@@ -18,6 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const sizeSelect = document.querySelectorAll(".section-1-list li");
     const doughSelect = document.querySelectorAll(".section-1-list2 li");
     let initialPrices = resetPrices();
+
+
 
 //functions
     // sekcja 1, przekalkulowanie kosztów i przejscie dalej
@@ -216,7 +219,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let prices = priceInputs.map(function (e) { return ( parseFloat(e.dataset.price) )}); //take out price values
 
         let elChecked = element.checked;
-        sum = Number(document.querySelector("#price").innerText);
 
         if ( !index ) {
 
@@ -242,8 +244,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 sum -= parseFloat(prices[index - 1].toFixed(2))
             }
         }
-        sum = (sum + doughCost + sizeCost).toFixed(2);
-        totalPrice.innerText = sum;
+        console.log(sum);
+        //sum = (sum + doughCost + sizeCost).toFixed(2);
+        totalPrice.innerText = (sum + parseFloat(basePrice.innerText)).toFixed(2);
     };
 
     //zaakceptowanie skladnikow
@@ -301,6 +304,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //zmiany podstron
     btn1.addEventListener("click", function () {
         changeSection(1);
+        totalPrice.innerText = basePrice.innerText;
     });
 
     btn2.addEventListener("click", function () {
@@ -309,6 +313,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     btnPrev1.addEventListener("click", function () {
         changeSection(-1);
-        checkUncheckAll(false)
+        checkUncheckAll(false);
+        totalPrice.innerText = basePrice.innerText
     });
 });
