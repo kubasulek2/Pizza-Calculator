@@ -111,28 +111,42 @@
     </div>
     <div class="section section-3">
         <div class="section-3-container">
-            <div id="resumee">
+            <div id="resume">
                 <h1><span>Your Choice:</span></h1>
-                <p id="resumee-item1">aaaa</p>
-                <p id="resumee-item2">aaaa</p>
+                <p id="resume-item1">aaaa</p>
+                <p id="resume-item2">aaaa</p>
             </div>
             <div class="form-container">
-                <form id="delivery" action="">
+                <form id="delivery" action="" autocomplete="off">
                     <div>
                         <div class="border-container">
                             <input id="name" type="text" name="name" placeholder="Name *" autocomplete="off">
-                            <span class="focus-border">
-                            </span>
+                            <span class="focus-border"></span>
                         </div>
-                            <input id="surname" type="text" name="surname" placeholder="Surname *">
-                            <input id="street" type="text" name="street" placeholder="Street *">
-                            <input id="apartment" type="text" class="optional" name="apartment" placeholder="Apartment *">
-                            <input id="email" type="email" name="email" placeholder="Email *">
-                            <input id="telNumber" type="number" name="telNumber" placeholder="Number *">
-
-
-                            <input id="comments" type="textarea" name="comments" class="optional" placeholder="Comments">
-                        </label>
+                            <div class="border-container">
+                                <input id="surname" type="text" name="surname" placeholder="Surname *" autocomplete="off">
+                                <span class="focus-border"></span>
+                            </div>
+                            <div class="border-container">
+                                <input id="street" type="text" name="street" placeholder="Street *" autocomplete="off">
+                                <span class="focus-border"></span>
+                            </div>
+                            <div class="border-container">
+                                <input id="apartment" type="text" class="optional" name="apartment" placeholder="Apartment *" autocomplete="off">
+                                <span class="focus-border"></span>
+                            </div>
+                            <div class="border-container">
+                                <input id="email" type="email" name="email" placeholder="Email *" autocomplete="off">
+                                <span class="focus-border"></span>
+                            </div>
+                            <div class="border-container">
+                                <input id="telNumber" type="text" name="telNumber" placeholder="Number *" autocomplete="off">
+                                <span class="focus-border"></span>
+                            </div>
+                            <div class="border-container">
+                                <textarea id="comments" name="comments" placeholder="Comments" autocomplete="off" maxlength="150"></textarea>
+                                <span class="focus-border"></span>
+                            </div>
                     </div>
                     <p id="formAlertMessage"></p>
                     <button id="accept-3">Accept</button>

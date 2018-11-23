@@ -73,7 +73,7 @@ button:active, .section-1 li:active{
 }
 .navbar-container{
     width: 90%;
-    background: #f8f8f8;
+    background: #f5f5f5;
     display: flex;
     text-align: center;
 }
@@ -183,25 +183,27 @@ button#prev-1{
     align-items: flex-start;
     margin-left: 2rem;
 }
-.section-3-container #resumee{
+.section-3-container #resume{
     margin-top: 5rem;
+    min-width: 650px;
     text-align: left;
 }
-#resumee h1{
+#resume h1{
     font-size: 3rem;
 }
-#resumee h1:after{
+#resume h1:after,
+.section-3 .form-container:after{
     content: "";
     margin-top: 0.5rem;
     display: block;
-    width: 20rem;
+    width: 160%;
     border-bottom: 2px solid #ed6155;
 }
 .section-3 form{
     margin-top: 2rem;
-    width: 50%;
-    min-width: 600px;
-    background: #f2f2f2;
+    /*width: 50%;*/
+    min-width: 650px;
+    background: #f5f5f5;
     border-radius: 0.33rem;
     display: flex;
     flex-direction: column;
@@ -209,11 +211,7 @@ button#prev-1{
     padding: 2rem 2rem 1rem 2rem;
 }
 .section-3 .form-container:after{
-    content: "";
-    display: block;
-    width: 160%;
     margin-top: 5rem;
-    border-bottom: 2px solid #ed6155;
 }
 .section-3 form > div{
     font-size: 1.4rem;
@@ -236,21 +234,38 @@ button#prev-1{
     background: #ed6155;
     transition: 0.5s;
 }
-.section-3 input{
+.section-3 .border-container:last-child .focus-border{
+    bottom: 5px;
+}
+.section-3 input,
+.section-3 textarea{
     padding: 0.5rem 0;
     font-size: 1.4rem;
     min-width: 33rem;
     margin: 2.2rem 0 0 0;
     border-bottom: 1px solid #808080;
-    background: #f2f2f2;
+    background: #f5f5f5;
 }
-.section-3 input:focus ~ .focus-border{
+.section-3 input:focus ~ .focus-border,
+.section-3 textarea:focus ~ .focus-border{
     width: 100%;
     transition: 0.5s;
     left: 0;
 }
+.section-3 textarea{
+    resize: none;
+    overflow: auto;
+    height: 8rem;
+}
+
 #formAlertMessage{
-    min-height: 2rem;
+    min-height: 4.75rem;
+}
+.buttons-container{
+    min-width: 960px;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
 }
 
 
