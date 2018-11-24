@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const doughSelect = document.querySelectorAll(".section-1-list2 li");
     let initialPrices = resetPrices();
 
+
     let pizzaData = {
         size: "",
         dough: "",
@@ -324,24 +325,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //validacja inputow z sekcji 3
     let inputsValidate = function(el){
-
+        let self = el;
         let type = el.id;
         let correct = false;
 
-        if ( (type === "name" || type === "surname") && (el.value.length >= 2 && /^[a-zA-Z]+$/.test(el.value) ) ){     //czy string zawiera same litery
-            correct = true;
+        //validacja tylko jesli cos zostalo wpisane w input
+        if ( el.value.length >= 1 ) {
 
-        } else if (type === "street" && ( (el.value.length >= 4 && el.value.match(/[a-z]/i)) )){
-           correct = true;
-        }
+            if ((type === "name" || type === "surname") && (el.value.length >= 2 && /^[a-zA-Z]+$/.test(el.value))) {     //czy string zawiera same litery
+                correct = true;
+
+            } else if (type === "street" && ((el.value.length >= 4 && el.value.match(/[a-z]/i)))) {
+                correct = true;
+            }
 
 
-        if(correct){
-            document.querySelector("#formAlertMessage").innerText = ''
-
-        }else {
-            document.querySelector("#formAlertMessage").innerText = "Please enter correct data.";
-            el.style.color = "red"
+            if (correct) {
+                document.querySelector("#formAlertMessage").innerText = '';
+                inputs.forEach(function (element) {
+                    element.disabled = "";
+                    element.style.opacity = "";
+                    element.style.cursor = "";
+                })
+            } else {
+                document.querySelector("#formAlertMessage").innerText = "Please enter correct data.";
+                el.style.color = "red";
+                el.style.borderBottomColor = "red";
+                inputs.forEach(function (element) {
+                    element !== self ? element.disabled = true : null;
+                    element !== self ? element.style.opacity = "0.6" : null;
+                    element !== self ? element.style.cursor = "not-allowed" : null;
+                })
+            }
         }
     };
 
@@ -419,6 +434,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         el.addEventListener("focus", function () {
             el.style.color = "";
+            el.style.borderBottomColor = "";
         })
     })
 
