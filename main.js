@@ -332,31 +332,45 @@ document.addEventListener("DOMContentLoaded", function () {
         //validacja tylko jesli cos zostalo wpisane w input
         if ( el.value.length >= 1 ) {
 
+            // validation for all types of inputs
             if ((type === "name" || type === "surname") && (el.value.length >= 2 && /^[a-zA-Z]+$/.test(el.value))) {     //czy string zawiera same litery
                 correct = true;
 
             } else if (type === "street" && ((el.value.length >= 4 && el.value.match(/[a-z]/i)))) {
                 correct = true;
+            } else if( type === "apartment" && /\d/.test(el.value) ){
+                correct = true;
+
+            } else if ( type === "email" && (el.value.length >= 4 && el.value.indexOf("@") !== -1 && el.value.indexOf(".") !== -1) ){
+                correct = true
+            } else if ( type === "telNumber" && ( /^\d+$/.test(el.value) && el.value.length > 7)){
+                correct = true;
             }
 
-
-            if (correct) {
-                document.querySelector("#formAlertMessage").innerText = '';
-                inputs.forEach(function (element) {
-                    element.disabled = "";
-                    element.style.opacity = "";
-                    element.style.cursor = "";
-                })
-            } else {
-                document.querySelector("#formAlertMessage").innerText = "Please enter correct data.";
-                el.style.color = "red";
-                el.style.borderBottomColor = "red";
-                inputs.forEach(function (element) {
-                    element !== self ? element.disabled = true : null;
-                    element !== self ? element.style.opacity = "0.6" : null;
-                    element !== self ? element.style.cursor = "not-allowed" : null;
-                })
+            if (correct){
+                el.style.borderBottomColor = "#3399FF";
             }
+
+        }else { correct = true }
+
+        // if input value is not correct, all other inputs are disabled, opacity, and curosor changed. if correct - clear those changes.
+        if (correct) {
+
+            document.querySelector("#formAlertMessage").innerText = '';
+            inputs.forEach(function (element) {
+                element.disabled = "";
+                element.style.opacity = "";
+                element.style.cursor = "";
+            })
+        } else {
+            document.querySelector("#formAlertMessage").innerText = "Please enter correct data.";
+            el.style.color = "red";
+            el.style.borderBottomColor = "red";
+            inputs.forEach(function (element) {
+                element !== self ? element.disabled = true : null;
+                element !== self ? element.style.opacity = "0.6" : null;
+                element !== self ? element.style.cursor = "not-allowed" : null;
+            })
         }
     };
 
@@ -433,6 +447,7 @@ document.addEventListener("DOMContentLoaded", function () {
             inputsValidate(el)
         });
         el.addEventListener("focus", function () {
+            //clear red color
             el.style.color = "";
             el.style.borderBottomColor = "";
         })
