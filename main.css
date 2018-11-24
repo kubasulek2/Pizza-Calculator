@@ -306,14 +306,14 @@ button#prev-1{
     border: 1px solid #ed6155;
 }
 .alert-container>div, .alert-container>button{
-    margin: 4rem 1rem;
+    margin: 3rem 1rem 1rem 1rem;
 }
 .alert h1{
     font-size: 3rem;
     line-height: 4rem;
     letter-spacing: 0.15rem;
 }
-.alert-container div:after{
+.alert-container div:first-child:after{
     content: "";
     display: inline-block;
     width: 80%;
@@ -324,6 +324,21 @@ button#prev-1{
     width: 200px;
     font-size: 2rem;
     background: #ed6155;
+    margin-bottom: 2rem;
+}
+#order{
+    width: 80%;
+    text-align: left;
+    margin: 1rem;
+    font-size: 1.5rem;
+
+}
+
+
+#page-info,
+#price{
+    color: #3399FF;
+
 }
 /*hide*/
 

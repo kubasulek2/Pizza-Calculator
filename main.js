@@ -5,21 +5,23 @@ document.addEventListener("DOMContentLoaded", function () {
     let sizeCost = 0;
     let doughCost = 0;
     let inputs = document.querySelectorAll(".section-3 input");
-    let btn1 = document.getElementById("accept-1");
-    let btn2 = document.getElementById("accept-2");
+    const btn1 = document.getElementById("accept-1");
+    const btn2 = document.getElementById("accept-2");
+    const btn3 = document.getElementById("accept-3");
     const btnPrev1 = document.getElementById("prev-1");
     const btnPrev2 = document.getElementById("prev-2");
     let pageInfo = document.getElementById("page-info");
-    let alertBtn = document.querySelector("#alert-button");
-    let checkBoxes = document.querySelectorAll(".section-2 input[type='checkbox']");
-    let totalPrice = document.getElementById("price");
-    let basePrice = document.getElementById("cost");
-    let size = document.getElementById("size");
-    let dough = document.getElementById("dough");
+    const alertBtn = document.querySelector("#alert-button");
+    const checkBoxes = document.querySelectorAll(".section-2 input[type='checkbox']");
+    const totalPrice = document.getElementById("price");
+    const basePrice = document.getElementById("cost");
+    const size = document.getElementById("size");
+    const dough = document.getElementById("dough");
     const form = document.querySelector(".section-2 form");
     const alertPage = document.querySelector(".alert");
     const sizeSelect = document.querySelectorAll(".section-1-list li");
     const doughSelect = document.querySelectorAll(".section-1-list2 li");
+
     let initialPrices = resetPrices();
 
 
@@ -34,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
         surname: '',
         street: '',
         apartment: '',
-        postalCode: '',
         email: '',
         telNumber: '',
         comments: ''
@@ -52,11 +53,15 @@ document.addEventListener("DOMContentLoaded", function () {
         return initialPrices
     }
     let handleSize = function(){
-
-        sizeCost = 0;
         let price = parseFloat(this.dataset.price);
         let multiply = parseFloat(this.dataset.multiply);
+        let sizeLi = document.querySelectorAll("section-1-list li");
+        sizeCost = 0;
 
+        for(let i = 0; i < sizeLi.length; i++){
+            if(sizeLi[i] !== this){ sizeLi.style.backgroundColor = ""}
+        }
+        this.style.backgroundColor = "#3399FF";
         size.innerText = this.innerText;
         sizeCost += price;
         let calculatedPrice = (sizeCost + doughCost).toFixed(2);
@@ -74,9 +79,14 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     let handleDough = function(){
 
-        doughCost = 0;
+        let doughLi = document.querySelectorAll("section-1-list li");
         let price = parseFloat(this.dataset.price);
+        doughCost = 0;
 
+        for(let i = 0; i < doughLi.length; i++){
+            if(doughLi[i] !== this){ doughLi.style.backgroundColor = ""}
+        }
+        this.style.backgroundColor = "#3399FF";
         dough.innerText = this.innerText;
         doughCost += price;
         let calculatedPrice = (sizeCost + doughCost).toFixed(2);
@@ -286,14 +296,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if ( alright ) {
-            info = "Total cost of your Pizza is " + (sum + parseFloat(basePrice.innerText)).toFixed(2) +"$.";
             createPizzaData(true);
+            changeSection(1);
         } else {
             info = "You must choose at least one ingredient!";
+            pageInfo.innerText = info;
+            showAlert(true);
         }
-
-        pageInfo.innerText = info;
-        showAlert(true);
     };
 
     let createPizzaData = function (boolean) {
@@ -336,7 +345,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if ((type === "name" || type === "surname") && (el.value.length >= 2 && /^[a-zA-Z]+$/.test(el.value))) {     //czy string zawiera same litery
                 correct = true;
 
-            } else if (type === "street" && ((el.value.length >= 4 && el.value.match(/[a-z]/i)))) {
+            } else if (type === "street" && ((el.value.length >= 4 && el.value.match(/[a-z]/i) && /\d/.test(el.value) ))) {
                 correct = true;
             } else if( type === "apartment" && /\d/.test(el.value) ){
                 correct = true;
@@ -373,6 +382,73 @@ document.addEventListener("DOMContentLoaded", function () {
             })
         }
     };
+
+    let handlesubmit2 = function(){
+        event.preventDefault();
+        let valid = true;
+        //sprawdzam czy wszystkie wymagane inputy sa wypelnione i czy zostały zwalidowane
+        for(let i = 0; i < inputs.length ; i++){
+            if (i === 3){ continue}
+            else if (inputs[i].value.length < 1 || inputs[i].style.borderBottomColor !== "rgb(51, 153, 255)") {
+                console.log("wrong");
+                valid = false}
+        }
+
+        if(valid){
+            orderData.name = inputs[0].value;
+            orderData.surname = inputs[1].value;
+            orderData.street = inputs[2].value;
+            orderData.apartment = inputs[3].value;
+            orderData.email = inputs[4].value;
+            orderData.telNumber = inputs[5].value;
+            orderData.comments = document.querySelector("#comments").value;
+
+            pageInfo.innerText = "Your order: " + totalPrice.innerText +" $";
+            let time = document.createElement("p");
+            let details = document.createElement("p");
+            let parent = document.querySelector(".alert-container");
+            let child = document.querySelector("#alert-button");
+            let div = document.createElement("div");
+            div.id = "order";
+
+            details.innerHTML = "Name:  " + orderData.name +"<br/>"+"Surname:  " + orderData.surname +"<br/>"+"Street:  " + orderData.street +"<br/>"+ "Apartment:  "  + orderData.apartment +"<br/>"+ "Email:  " + orderData.email +"<br/>" + "Phone number:  "+ orderData.telNumber;
+            div.appendChild(details);
+            parent.insertBefore(time,child);
+            parent.insertBefore(div, child);
+            timer(time);
+            showAlert(true);
+            child.addEventListener("click",function () {
+                location.reload();
+            })
+
+        }
+        else{
+            pageInfo.innerText = "Please complete the form";
+            showAlert(true)
+        }
+    };
+
+    let timer = function (el){
+        let initial = 1800;
+        let minutes;
+        let seconds;
+        let timer = window.setInterval(function () {
+            initial--;
+            minutes = Math.floor(initial / 60).toFixed(0);
+            seconds = (initial % 60);
+            if (seconds < 10){ seconds = "0" + seconds; }
+            if (minutes < 10){ minutes = "0" + minutes; }
+            el.innerText = "Time to your pizza: "+minutes +":"+seconds;
+
+            if(initial < 1){
+                window.clearInterval(timer);
+                location.reload();
+            }
+
+        },1000)
+    };
+
+
 
 //events
     checkBoxes.forEach(function ( element, index ) {
@@ -451,7 +527,9 @@ document.addEventListener("DOMContentLoaded", function () {
             el.style.color = "";
             el.style.borderBottomColor = "";
         })
-    })
+    });
+
+    btn3.addEventListener("click", handlesubmit2)
 
 
 });
