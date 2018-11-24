@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let sum = 0;
     let sizeCost = 0;
     let doughCost = 0;
+    let inputs = document.querySelectorAll(".section-3 input");
     let btn1 = document.getElementById("accept-1");
     let btn2 = document.getElementById("accept-2");
     const btnPrev1 = document.getElementById("prev-1");
@@ -321,6 +322,29 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
+    //validacja inputow z sekcji 3
+    let inputsValidate = function(el){
+
+        let type = el.id;
+        let correct = false;
+
+        if ( (type === "name" || type === "surname") && (el.value.length >= 2 && /^[a-zA-Z]+$/.test(el.value) ) ){     //czy string zawiera same litery
+            correct = true;
+
+        } else if (type === "street" && ( (el.value.length >= 4 && el.value.match(/[a-z]/i)) )){
+           correct = true;
+        }
+
+
+        if(correct){
+            document.querySelector("#formAlertMessage").innerText = ''
+
+        }else {
+            document.querySelector("#formAlertMessage").innerText = "Please enter correct data.";
+            el.style.color = "red"
+        }
+    };
+
 //events
     checkBoxes.forEach(function ( element, index ) {
 
@@ -384,6 +408,18 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#reset").addEventListener("click", function () {
         pageInfo.innerText = "Are You Sure?";
         showAlert(true)
+    });
+    
+    
+    // handling section 3 inputs
+    
+    inputs.forEach(function (el) {
+        el.addEventListener("blur", function () {
+            inputsValidate(el)
+        });
+        el.addEventListener("focus", function () {
+            el.style.color = "";
+        })
     })
 
 

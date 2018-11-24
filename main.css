@@ -248,7 +248,7 @@ button#prev-1{
     margin: 2.2rem 0 0 0;
     border-bottom: 1px solid #808080;
     background: #f5f5f5;
-    color: #3399FF;
+    color: #404040;
 }
 .section-3 input:focus ~ .focus-border,
 .section-3 textarea:focus ~ .focus-border{
