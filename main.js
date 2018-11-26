@@ -53,13 +53,13 @@ document.addEventListener("DOMContentLoaded", function () {
         return initialPrices
     }
     let handleSize = function(){
+
         let price = parseFloat(this.dataset.price);
         let multiply = parseFloat(this.dataset.multiply);
-        let sizeLi = document.querySelectorAll("section-1-list li");
         sizeCost = 0;
 
-        for(let i = 0; i < sizeLi.length; i++){
-            if(sizeLi[i] !== this){ sizeLi.style.backgroundColor = ""}
+        for(let i = 0; i < sizeSelect.length; i++){
+            if(sizeSelect[i] !== this){ sizeSelect[i].style.backgroundColor = ""}
         }
         this.style.backgroundColor = "#3399FF";
         size.innerText = this.innerText;
@@ -79,12 +79,13 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     let handleDough = function(){
 
-        let doughLi = document.querySelectorAll("section-1-list li");
         let price = parseFloat(this.dataset.price);
         doughCost = 0;
-
-        for(let i = 0; i < doughLi.length; i++){
-            if(doughLi[i] !== this){ doughLi.style.backgroundColor = ""}
+        console.log(this);
+        for(let i = 0; i < doughSelect.length; i++){
+            console.log(doughSelect[i], this);
+            if(doughSelect[i] !== this){
+                doughSelect[i].style.backgroundColor = ""}
         }
         this.style.backgroundColor = "#3399FF";
         dough.innerText = this.innerText;
