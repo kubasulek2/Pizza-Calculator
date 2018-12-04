@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     //zamkniecie alertu po kliknieciu poza jego boxem
-    let outsideBoxClick = function(){
+    let outsideBoxClick = function(event){
         if ( ! alertPage.classList.contains("hide") ){
 
             if ( ! event.target.closest(".alert-container") ){showAlert(false)}
@@ -285,8 +285,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     //zaakceptowanie skladnikow
-    let handleSubmit = function(){
-
+    let handleSubmit = function(event){
         event.preventDefault();
         let info;
         let alright = false;
@@ -384,7 +383,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
-    let handlesubmit2 = function(){
+    let handlesubmit2 = function(event){
         event.preventDefault();
         let valid = true;
         //sprawdzam czy wszystkie wymagane inputy sa wypelnione i czy zostały zwalidowane
@@ -459,11 +458,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 //event na formularz, plus zablokowanie przycisku na czas animacji(nie chce dzialac na czas!!)
-    form.addEventListener("submit", function () {
+    form.addEventListener("submit", function (event) {
         window.setTimeout( function () {btn2.style.pointerEvents = "none"},0 );
         window.setTimeout( function () {btn2.style.pointerEvents = ""},800 );
 
-        handleSubmit();
+        handleSubmit(event);
     });
 
     //zamkniecie alertu po kliknieciu w przycisk

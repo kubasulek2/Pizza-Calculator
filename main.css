@@ -10,6 +10,9 @@
     border: none;
     outline: none;
 }
+textarea{
+    display: block;
+}
 body{
      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     height : 100%;
@@ -236,9 +239,6 @@ button#prev-1{
     height: 2px;
     background: #ed6155;
     transition: 0.5s;
-}
-.section-3 .border-container:last-child .focus-border{
-    bottom: 5px;
 }
 .section-3 input,
 .section-3 textarea{
